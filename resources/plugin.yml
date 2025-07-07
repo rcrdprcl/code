@@ -1,0 +1,60 @@
+name: SoneRPG
+version: '1.0.0-B1_Early'
+main: sonemc.soneRPG.SoneRPG
+api-version: '1.20'
+prefix: SoneMC (SoneRPG)
+authors: [SoneMC]
+description: Skyrim-Inspired RPG Plugin with Alchemy, Poisons, Quests, Advanced Combat & More
+website: sonemcpl.pages.dev
+
+commands:
+  sonerpg:
+    description: Main SoneRPG command
+    usage: /sonerpg
+    permission: sonerpg.admin
+    aliases: [srpg]
+  skills:
+    description: Open the skills GUI
+    usage: /skills
+    aliases: [skill, rpgskills]
+  rpgui:
+    description: Open the main RPG hub
+    usage: /rpgui
+    aliases: [forge, rpghub, hub]
+  enchantforge:
+    description: Open the enchantment forge
+    usage: /enchantforge
+    aliases: [eforge, enchants, customenchants]
+  disenchant:
+    description: Remove custom enchantment and unlock it
+    usage: /disenchant
+    aliases: [deenchant, removeenchant]
+  class:
+    description: Choose your RPG class
+    usage: /class
+    aliases: [classes, selectclass, chooseclass]
+  race:
+    description: Choose your character race
+    usage: /race
+    aliases: [races, selectrace, chooserace]
+  quests:
+    description: View and manage your quests
+    usage: /quests
+    aliases: [quest, missions, adventures]
+  rpgshop:
+    description: Open the enhanced shop
+    usage: /rpgshop [category]
+    aliases: [shop, store, merchant, market, shop]
+  craft:
+    description: Open the crafting interface
+    usage: /craft
+    aliases: [crafting, smithing, forge]
+  alchemy:
+    description: Open the alchemy laboratory
+    usage: /alchemy
+    aliases: [brew, potions, poisons, laboratory]
+
+permissions:
+  sonerpg.admin:
+    description: Allows access to SoneRPG admin commands
+    default: op

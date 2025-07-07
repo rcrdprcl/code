@@ -1,0 +1,3 @@
+players:
+  # Player statistics will be stored here automatically
+  # Format: players.<uuid>: {statistics data}

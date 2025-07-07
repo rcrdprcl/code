@@ -1,0 +1,205 @@
+# General Messages
+general:
+  plugin-name: "§7[§bSoneRPG§7]"
+  no-permission: "§cYou don't have permission to use this command."
+  player-only: "§cThis command can only be used by players."
+  invalid-player: "§cPlayer not found."
+  invalid-number: "§cInvalid number."
+
+# Level and XP Messages
+level:
+  level-up: "§a§l✦ LEVEL UP! §7You are now RPG level §a{level}§7!"
+  skill-points-gained: "§7You gained §e{points} §7skill point(s)!"
+  current-level: "§7Your RPG level: §a{level}"
+  player-level: "§7{player}'s RPG level: §a{level}"
+  level-set: "§7Set {player}'s RPG level to §a{level}"
+  level-set-notification: "§7Your RPG level has been set to §a{level}"
+
+# XP and Skills Messages
+xp:
+  xp-gained: "§7+§b{amount} §7{skill} XP"
+  critical-hit: "§c§l⚡ CRITICAL HIT! §7{damage} damage"
+  instant-kill: "§4§l💀 INSTANT KILL! §7Devastating blow!"
+
+# Coins and Economy
+economy:
+  coins-gained: "§7+§6{amount} §7Coins"
+  coins-current: "§6§lYour Septims: §f{amount}"
+  not-enough-coins: "§cYou don't have enough septims for this purchase!"
+  purchase-complete: "§a§l✦ Purchase Complete! §7{item}"
+  item-sold: "§a§l✦ Item Sold! §7Check your septims!"
+  cannot-sell: "§c§lThis item cannot be sold here!"
+
+# Race Selection
+race:
+  already-chosen: "§cYou have already chosen your race!"
+  selection-title: "§e§lRace Selection"
+  selection-description: "§7Choose your character's race to gain unique racial abilities and bonuses."
+  selection-warning: "§c§lWARNING: This choice is permanent!"
+  selection-warning-desc: "§7Choose wisely as you cannot change later."
+  race-selected: "§a§l✦ Race Selected! §7You are now {race}§7!"
+  race-powers: "§7You have inherited the powers of your ancestors!"
+  continue-adventure: "§7Use §e/rpgui §7to continue your adventure!"
+
+# Class Selection
+class:
+  already-chosen: "§cYou have already chosen your class!"
+  must-choose-race: "§cYou must choose your race first!"
+  selection-title: "§e§lClass Selection"
+  selection-description: "§7Choose your RPG class to specialize your character's abilities and bonuses."
+  selection-warning: "§c§lWARNING: This choice is permanent!"
+  selection-warning-desc: "§7Choose wisely as you cannot change later."
+  class-selected: "§a§l✦ Class Selected! §7You are now a §6{class}§7!"
+  bonus-skill-points: "§7You received §e3 bonus skill points §7to start your journey!"
+  access-features: "§7Use §e/rpgui §7to access your RPG features!"
+
+# Enchantments
+enchantments:
+  discovered: "§a§l✦ Enchantment Discovered! §7You have unlocked §5{enchantment}§7!"
+  access-forge: "§7Use §e/rpgui §7→ §5Enchants §7to apply it to your weapons."
+  fortune-hunter-bonus: "§d§l✦ FORTUNE HUNTER! §7Bonus enchantment from rare drop chance!"
+  applied: "§a§l✦ Enchantment Applied! §7{enchantment} has been added to your {item}!"
+  forged: "§a§l✦ Enchantment Forged! §7Your {item} now bears the power of §5{enchantment}§7!"
+  recovered: "§a§l✦ Enchantment Recovered! §7You can now use §5{enchantment} §7again!"
+  no-enchantment: "§cThis item doesn't have any custom enchantments."
+  must-hold-item: "§cYou must be holding an item to apply an enchantment!"
+  cannot-apply: "§cThis enchantment cannot be applied to {item}!"
+  already-enchanted: "§cThis item already has a custom enchantment! Use §e/disenchant §cfirst."
+  not-available: "§cYou don't have this enchantment available! Find it from mobs first."
+  not-unlocked: "§cYou haven't unlocked this enchantment yet!"
+  must-hold-item-disenchant: "§cYou must be holding an item to disenchant."
+
+# Quests
+quests:
+  accepted: "§a§l✦ Quest Accepted! §7{quest}"
+  completed: "§a§l✦ Quest Completed! §7{quest}"
+  claim-rewards: "§7Use §e/rpgui §7→ §eQuests §7to claim your rewards!"
+  rewards-claimed: "§a§l✦ Quest Rewards Claimed! §7Check your inventory and stats!"
+  max-active: "§cYou can only have {max} active quests at a time!"
+
+# Shop
+shop:
+  instructions-title: "§7§lShopping Instructions:"
+  withdraw-instruction: "§a§l▶ Left Click: §7Withdraw 100"
+  deposit-instruction: "§c§l▶ Right Click: §7Deposit 100"
+  hold-item-deposit: "§c§lHold an item in your hand to deposit it!"
+
+# Crafting and Alchemy
+crafting:
+  item-crafted: "§a§l✦ Item Crafted! §7{item} has been forged!"
+  skill-increased: "§7Your smithing skill increases!"
+  cannot-craft: "§cYou cannot craft this item right now!"
+  missing-ingredients: "§cYou don't have the required ingredients!"
+  level-too-low: "§cYou need higher {skill} skill to craft this item!"
+
+alchemy:
+  potion-crafted: "§a§l✦ Potion Crafted! §7{potion}"
+  poison-crafted: "§a§l✦ Poison Crafted! §7{poison}"
+  level-required: "§cYou need Alchemy level {level} to craft this!"
+  level-required-poisons: "§cYou need Alchemy level 3 to craft poisons!"
+
+# Poison System
+poison:
+  weapon-poisoned: "§a§l✦ Weapon Poisoned! §7Your weapon is now coated with {poison}"
+  cannot-coat: "§cThis weapon cannot be coated with poison!"
+  already-poisoned: "§cThis weapon already has a poison coating! Wait for it to wear off."
+  need-weapon: "§cYou need to hold a weapon to apply poison!"
+  deadly-poison: "§2§l☠ DEADLY POISON! §7Enemy is poisoned!"
+  paralysis: "§8§l⚡ PARALYSIS! §7Enemy is slowed!"
+  weakness: "§7§l💀 WEAKNESS! §7Enemy damage reduced!"
+  blindness: "§0§l👁 BLINDNESS! §7Enemy cannot see!"
+  wither: "§8§l💀 WITHER! §7Enemy withers away!"
+  confusion: "§5§l🌀 CONFUSION! §7Enemy is disoriented!"
+  frost: "§b§l❄ FROST! §7Enemy is frozen!"
+  fire-poison: "§6§l🔥 FIRE POISON! §7Enemy burns!"
+
+# Potion Effects
+potions:
+  healed: "§a§l✦ Healed! §7+{hearts} hearts restored"
+  fully-healed: "§a§l✦ Fully Healed! §7All health restored"
+  strength-enhanced: "§c§l✦ Strength Enhanced! §7+25% damage for 5 minutes"
+  speed-enhanced: "§b§l✦ Speed Enhanced! §7+30% speed for 5 minutes"
+  night-vision: "§e§l✦ Night Vision! §7See in the dark for 8 minutes"
+  fire-resistance: "§6§l✦ Fire Resistance! §7Immune to fire for 8 minutes"
+  invisibility: "§8§l✦ Invisibility! §7You are invisible for 3 minutes"
+  water-breathing: "§9§l✦ Water Breathing! §7Breathe underwater for 8 minutes"
+  levitation: "§d§l✦ Levitation! §7Float in the air for 30 seconds"
+
+# Welcome Messages
+welcome:
+  new-player: "§7[§bSoneRPG§7] §fWelcome to the enhanced RPG experience!"
+  choose-race: "§7You can choose a race with §e/race §7for special bonuses!"
+  choose-class: "§7You can choose a class with §e/class §7for special bonuses!"
+  access-hub: "§7Use §e/rpgui §7to access your RPG hub!"
+  welcome-back: "§7[§bSoneRPG§7] §fWelcome back, §6{class}§f!"
+  current-level-welcome: "§7Your RPG level: §a{level}"
+
+# Action Bar Messages
+actionbar:
+  level-up: "§a§l✦ LEVEL UP! §7RPG Level §a{level}"
+  enchantment-found: "§5§l✦ ENCHANTMENT! §7Found §5{enchantment}"
+  kill-streak: "§6§l⚡ KILL STREAK! §7{streak} kills"
+  quest-progress: "§e§l✦ QUEST: §7{quest} §f({progress}/{target})"
+  mana-info: "§b§lMana: §f{mana}§7/§f{maxMana}"
+
+# Enchantment Effects
+enchant-effects:
+  rage: "§c§l⚡ RAGE! §7Berserker fury!"
+  sharp-eye: "§a§l🎯 SHARP EYE! §7Perfect shot!"
+  lightning-strike: "§e§l⚡ LIGHTNING STRIKE! §7Thunder roars!"
+  frost-bite: "§b§l❄ FROST BITE! §7Enemy frozen!"
+  berserker: "§4§l⚡ BERSERKER! §7Rage fuels your strength!"
+  vampire: "§5§l🩸 VAMPIRE! §7+{healing} health!"
+  piercing-shot: "§d§l➤ PIERCING SHOT! §7Arrow pierces through!"
+  fire-damage: "§6§l🔥 FIRE DAMAGE! §7Enemy burns!"
+  shock-damage: "§9§l⚡ SHOCK DAMAGE! §7Chain lightning!"
+  paralysis-enchant: "§7§l💀 PARALYSIS! §7Enemy cannot move!"
+  soul-trap: "§8§l⚡ SOUL TRAP! §7Double XP gained!"
+
+# Mob Abilities
+mob-abilities:
+  ignited: "§6§l🔥 IGNITED! §7You are burning!"
+  frozen: "§b§l❄ FROZEN! §7You are slowed by cold!"
+  poisoned: "§2§l☠ POISONED! §7Venom courses through your veins!"
+  crushing-blow: "§c§l💥 CRUSHING BLOW! §7Extra damage taken!"
+  weakened: "§7§l💀 WEAKENED! §7Your strength is drained!"
+  withering: "§8§l💀 WITHERING! §7Life force draining!"
+  blinded: "§0§l👁 BLINDED! §7You cannot see clearly!"
+  dodged: "§e§l⚡ DODGED! §7{mob} evaded your attack!"
+  armored: "§7§l🛡 ARMORED! §7Damage reduced by thick hide!"
+  magic-shield: "§5§l✨ MAGIC SHIELD! §7Damage reflected back!"
+  regeneration: "§c§l❤ REGENERATION! §7{mob} heals!"
+
+# Racial Abilities
+racial:
+  nord-coin-bonus: "§6§l⚡ NORD BONUS! §7+2% coins from quick kill!"
+  nord-xp-bonus: "§a§l⚡ NORD BONUS! §7+3% XP from efficient kill!"
+
+# GUI Titles
+gui:
+  main-hub: "§b§lRPG Hub"
+  skills: "§6§lSkills & Upgrades"
+  enchant-forge: "§5§lEnchant Forge"
+  quests: "§e§lQuests & Adventures"
+  shop: "§6§lShop"
+  crafting: "§6§lSkyforge Smithing"
+  alchemy: "§2§lAlchemy Laboratory"
+  statistics: "§3§lCombat Statistics"
+  leaderboards: "§e§lLeaderboards"
+  race-selection: "§6§lChoose Your Race"
+  class-selection: "§6§lChoose Your Class"
+
+# Categories
+categories:
+  weapons: "Weapons & Enchanted Blades"
+  armor: "Armor & Enchanted Protection"
+  consumables: "Potions & Consumables"
+  materials: "Crafting Materials & Gems"
+
+# Error Messages
+errors:
+  file-save: "Could not save {file}: {error}"
+  file-create: "Could not create {file}: {error}"
+  hologram-create: "Failed to create hologram for entity: {error}"
+  hologram-update: "Failed to update hologram text: {error}"
+  particle-error: "Particle effect error: {error}"

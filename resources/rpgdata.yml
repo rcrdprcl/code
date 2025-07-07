@@ -1,0 +1,3 @@
+players:
+  # Player RPG data will be stored here automatically
+  # Format: players.<uuid>: {rpg data}

@@ -1,0 +1,142 @@
+# Enabled Mobs
+# Set to true to enable RPG features for these mobs
+enabled-mobs:
+  zombie: true
+  skeleton: true
+  creeper: true
+  spider: true
+  cave_spider: true
+  enderman: true
+  witch: true
+  slime: true
+  magma_cube: true
+  blaze: true
+  ghast: true
+  wither_skeleton: true
+  piglin: true
+  piglin_brute: true
+  hoglin: true
+  zoglin: true
+  zombified_piglin: true
+  drowned: true
+  phantom: true
+  shulker: true
+  silverfish: true
+  vindicator: true
+  evoker: true
+  pillager: true
+  ravager: true
+  vex: true
+  
+  iron_golem: true
+  snow_golem: false
+  wolf: false
+  polar_bear: true
+  llama: false
+  panda: false
+  dolphin: false
+  
+  # Passive Mobs (usually disabled for RPG)
+  cow: false
+  pig: false
+  chicken: false
+  sheep: false
+  horse: false
+  donkey: false
+  mule: false
+  cat: false
+  parrot: false
+  rabbit: false
+  turtle: false
+  fox: false
+  bee: false
+  axolotl: false
+  glow_squid: false
+  squid: false
+  bat: false
+  cod: false
+  salmon: false
+  tropical_fish: false
+  pufferfish: false
+  ocelot: false
+  villager: false
+  wandering_trader: false
+  
+  ender_dragon: true
+  wither: true
+  elder_guardian: true
+  guardian: true
+  strider: false
+  endermite: true
+  mooshroom: false
+  skeleton_horse: false
+  zombie_horse: false
+  trader_llama: false
+  
+  warden: true
+  allay: false
+  frog: false
+  tadpole: false
+  
+  sniffer: false
+  camel: false
+
+mob-xp:
+  # Common Hostile Mobs
+  zombie: 15
+  skeleton: 20
+  creeper: 25
+  spider: 12
+  cave_spider: 18
+  enderman: 30
+  witch: 35
+  slime: 8
+  magma_cube: 12
+  silverfish: 5
+  
+  # Nether Mobs
+  blaze: 40
+  ghast: 50
+  wither_skeleton: 60
+  piglin: 25
+  piglin_brute: 45
+  hoglin: 35
+  zoglin: 40
+  zombified_piglin: 20
+  
+  vindicator: 30
+  evoker: 50
+  pillager: 20
+  ravager: 60
+  vex: 15
+  
+  iron_golem: 80
+  polar_bear: 30
+  
+  ender_dragon: 1000
+  wither: 800
+  elder_guardian: 200
+  guardian: 50
+  warden: 500
+  
+  drowned: 18
+  phantom: 25
+  endermite: 10
+  shulker: 45
+
+# Mob Difficulty Settings
+difficulty:
+  # Health scaling per level (0.2 = 20% increase per level)
+  health-multiplier: 0.2
+  
+  # Damage scaling per level (0.15 = 15% increase per level)
+  damage-multiplier: 0.15
+  
+  # Speed scaling per level (0.05 = 5% increase per level)
+  speed-multiplier: 0.05
+  
+  # Maximum mob level
+  max-level: 20
+  
+  # Detection range for player level calculation
+  detection-range: 50

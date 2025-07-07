@@ -1,0 +1,110 @@
+# General Settings
+enable-debug: false
+auto-save-interval: 300 # seconds
+
+# Holographic Health Settings
+holographic-health:
+  enabled: true
+  update-interval: 5 # ticks (0.25 seconds for smooth movement)
+  visibility-range: 25 # blocks
+  show-percentage: true
+  show-level: true
+  enhanced-bars: true
+  
+# Armor Speed Settings
+armor-speed:
+  enabled: true
+  leather-speed: 1.0
+  chainmail-speed: 1.0
+  iron-speed: 0.95
+  diamond-speed: 0.95
+  netherite-speed: 0.90
+  
+# Enhanced Particle Effects
+particle-effects:
+  enabled: true
+  weapon-particles: true
+  enchantment-particles: true
+  ambient-particles: true
+  death-particles: true
+  wooden-tools: "BLOCK_DUST"
+  stone-tools: "BLOCK_DUST"
+  iron-tools: "CRIT"
+  diamond-tools: "ENCHANTMENT_TABLE"
+  netherite-tools: "SOUL_FIRE_FLAME"
+  golden-tools: "FALLING_DUST"
+  
+# Mob Difficulty Settings
+mob-difficulty:
+  enabled: true
+  max-player-level: 20
+  max-mob-level: 20
+  health-scaling: 0.2 # 20% per level
+  damage-scaling: 0.15 # 15% per level
+  speed-scaling: 0.05 # 5% per level
+  detection-range: 50 # blocks
+  
+# RPG Level Settings
+rpg-levels:
+  max-level: 20
+  base-xp-requirement: 200
+  xp-scaling: 1.4 # XP requirement multiplier per level
+  
+# Enhanced Skill System
+skills:
+  max-skill-level: 10
+  sword-damage-bonus: 0.05 # 5% per level
+  axe-damage-bonus: 0.04 # 4% per level
+  bow-damage-bonus: 0.04 # 4% per level
+  light-armor-speed-bonus: 0.03 # 3% per level
+  instant-kill-chances: true
+
+# Class System Settings
+classes:
+  enabled: true
+  force-selection: false # Allow playing without class
+  warrior-melee-bonus: 0.15 # 15% melee damage bonus
+  archer-bow-bonus: 0.20 # 20% bow damage bonus
+  berserker-low-health-bonus: 0.30 # 30% damage when low health
+  berserker-life-steal: 0.05 # 5% life steal
+
+# Enhanced Quest System
+quests:
+  enabled: true
+  max-active-quests: 8
+  auto-assign-starter-quests: false
+  quest-completion-sound: true
+  enhanced-rewards: true
+  
+# Economy Settings
+economy:
+  enabled: true
+  starting-coins: 100
+  coins-per-mob-level: 2
+  kill-streak-bonus: true
+  currency-name: "Septims"
+  
+# Enhanced Enchantment System
+enchantments:
+  enabled: true
+  total-enchantments: 18
+  weapon-enchantments: 10
+  armor-enchantments: 8
+  improved-drop-rates: true
+  enchantment-effects: true
+  
+# Shop System
+shop:
+  enabled: true
+  enchanted-items: true
+  dynamic-pricing: true
+  race-bonuses: true
+  skill-bonuses: true
+  
+# Action Bar Settings
+action-bar:
+  enabled: true
+  show-health: true
+  show-coins: true
+  show-kill-streak: true
+  update-interval: 40 # ticks (2 seconds)
