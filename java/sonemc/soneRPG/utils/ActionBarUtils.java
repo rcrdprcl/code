@@ -10,10 +10,6 @@ public class ActionBarUtils {
         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(message));
     }
     
-    public static void sendStaminaBar(Player player, String staminaBar) {
-        player.sendMessage("§7Stamina: " + staminaBar);
-    }
-    
     public static void sendXPGain(Player player, String skillName, int xp) {
         sendActionBar(player, "§7+§b" + xp + " §7" + skillName + " XP");
     }

@@ -33,7 +33,7 @@ public class ActionBarUpdateListener implements Listener {
                 }
             }
         };
-        actionBarTask.runTaskTimer(plugin, 0L, 40L);
+        actionBarTask.runTaskTimer(plugin, 0L, 20L);
     }
 
     private void updatePlayerActionBar(Player player) {
@@ -58,8 +58,9 @@ public class ActionBarUpdateListener implements Listener {
             statusBar.append(" §7| §c🗡 §f").append(rpgData.getKillStreak());
         }
         
+        statusBar.append(" §7| §eStamina: ").append(staminaData.getStaminaBar());
+        
         ActionBarUtils.sendActionBar(player, statusBar.toString());
-        ActionBarUtils.sendStaminaBar(player, staminaData.getStaminaBar());
     }
 
     public void cleanup() {

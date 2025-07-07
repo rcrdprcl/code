@@ -4,40 +4,37 @@ public class PlayerStaminaData {
     private double stamina;
     private double maxStamina;
     private long lastStaminaUpdate;
-    private boolean isRegenerating;
-    private long regenStartTime;
+    private long lastDamageTime;
+    private long lastSprintTime;
     
     public PlayerStaminaData() {
         this.maxStamina = 100.0;
         this.stamina = 100.0;
         this.lastStaminaUpdate = System.currentTimeMillis();
-        this.isRegenerating = false;
-        this.regenStartTime = 0;
+        this.lastDamageTime = 0;
+        this.lastSprintTime = 0;
     }
     
     public void updateStamina() {
         long currentTime = System.currentTimeMillis();
+        long timeSinceUpdate = currentTime - lastStaminaUpdate;
         
-        if (stamina <= 0 && !isRegenerating) {
-            isRegenerating = true;
-            regenStartTime = currentTime;
-        }
+        if (timeSinceUpdate < 1000) return;
         
-        if (isRegenerating) {
-            long timeSinceRegenStart = currentTime - regenStartTime;
-            if (timeSinceRegenStart >= 15000) { // 15 seconds
-                double regenAmount = (timeSinceRegenStart - 15000) / 1000.0 * (maxStamina / 10.0); // 10 seconds to full
-                stamina = Math.min(maxStamina, regenAmount);
-                
-                if (stamina >= maxStamina) {
-                    isRegenerating = false;
+        if (stamina < maxStamina) {
+            long timeSinceLastDamage = currentTime - lastDamageTime;
+            long timeSinceLastSprint = currentTime - lastSprintTime;
+            
+            if (timeSinceLastDamage >= 3000 && timeSinceLastSprint >= 2000) {
+                if (stamina <= 0) {
+                    if (timeSinceLastDamage >= 15000 && timeSinceLastSprint >= 15000) {
+                        double regenRate = maxStamina / 10.0;
+                        stamina = Math.min(maxStamina, stamina + regenRate);
+                    }
+                } else {
+                    double regenRate = maxStamina / 8.0;
+                    stamina = Math.min(maxStamina, stamina + regenRate);
                 }
-            }
-        } else if (stamina < maxStamina && stamina > 0) {
-            long timeSinceUpdate = currentTime - lastStaminaUpdate;
-            if (timeSinceUpdate >= 2000) { // 2 seconds delay before normal regen
-                double regenAmount = (timeSinceUpdate - 2000) / 1000.0 * (maxStamina / 8.0); // 8 seconds to full
-                stamina = Math.min(maxStamina, stamina + regenAmount);
             }
         }
         
@@ -46,20 +43,23 @@ public class PlayerStaminaData {
     
     public boolean consumeStamina(double amount) {
         if (stamina >= amount) {
-            stamina -= amount;
+            stamina = Math.max(0, stamina - amount);
             lastStaminaUpdate = System.currentTimeMillis();
-            if (stamina <= 0) {
-                stamina = 0;
-                isRegenerating = true;
-                regenStartTime = System.currentTimeMillis();
-            }
             return true;
         }
         return false;
     }
     
+    public void onDamaged() {
+        lastDamageTime = System.currentTimeMillis();
+    }
+    
+    public void onSprint() {
+        lastSprintTime = System.currentTimeMillis();
+    }
+    
     public boolean canSprint() {
-        return stamina > 10.0;
+        return stamina >= 10.0;
     }
     
     public boolean canCriticalHit() {
@@ -92,5 +92,4 @@ public class PlayerStaminaData {
         if (stamina > maxStamina) stamina = maxStamina;
     }
     public double getStaminaPercentage() { return (stamina / maxStamina) * 100.0; }
-    public boolean isRegenerating() { return isRegenerating; }
 }
