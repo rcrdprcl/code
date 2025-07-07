@@ -10,6 +10,10 @@ public class ActionBarUtils {
         player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(message));
     }
     
+    public static void sendStaminaBar(Player player, String staminaBar) {
+        player.sendMessage("§7Stamina: " + staminaBar);
+    }
+    
     public static void sendXPGain(Player player, String skillName, int xp) {
         sendActionBar(player, "§7+§b" + xp + " §7" + skillName + " XP");
     }
@@ -28,14 +32,6 @@ public class ActionBarUtils {
     
     public static void sendKillStreak(Player player, int streak) {
         sendActionBar(player, "§6§l⚡ KILL STREAK! §7" + streak + " kills");
-    }
-    
-    public static void sendQuestProgress(Player player, String questName, int progress, int target) {
-        sendActionBar(player, "§e§l✦ QUEST: §7" + questName + " §f(" + progress + "/" + target + ")");
-    }
-    
-    public static void sendManaInfo(Player player, int mana, int maxMana) {
-        sendActionBar(player, "§b§lMana: §f" + mana + "§7/§f" + maxMana);
     }
     
     public static void sendCriticalHit(Player player, double damage) {

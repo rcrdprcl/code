@@ -3,21 +3,15 @@ package sonemc.soneRPG.enums;
 import org.bukkit.Material;
 
 public enum SkillType {
-    // Combat Skills
     SWORD_DAMAGE("One-Handed", "Master of swords and daggers", Material.DIAMOND_SWORD),
     BOW_DAMAGE("Archery", "Expert marksman with bows", Material.BOW),
-
-    // Magic Skills
-    RESTORATION("Restoration", "Healing and protective\n§7+1% healing from golden apples per level\n§7+2% health potion effectiveness per level\n§7+0.5% health regeneration per level\n§7+1 Alchemy level unlocked", Material.GOLDEN_APPLE),
+    RESTORATION("Restoration", "Healing and protective magic", Material.GOLDEN_APPLE),
     ENCHANTING("Enchanting", "Magical item enhancement", Material.ENCHANTING_TABLE),
-
-    // Physical Skills
     LIGHT_ARMOR_SPEED("Light Armor", "Agility and speed enhancement", Material.LEATHER_CHESTPLATE),
     HEAVY_ARMOR("Heavy Armor", "Maximum protection and defense", Material.IRON_CHESTPLATE),
     SMITHING("Smithing", "Weapon and armor crafting", Material.ANVIL),
-
-    // Crafting Skills
-    ALCHEMY("Alchemy", "Potion brewing and poison crafting\n§7+5% potion effectiveness per level\n§7+2% poison duration per level\n§7Unlocks advanced recipes", Material.BREWING_STAND);
+    ALCHEMY("Alchemy", "Potion brewing and poison crafting", Material.BREWING_STAND),
+    STAMINA("Stamina", "Endurance and energy management\n§7+15 max stamina per level\n§7Better sprint efficiency\n§7Faster stamina regeneration", Material.FEATHER);
 
     private final String displayName;
     private final String description;

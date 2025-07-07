@@ -34,14 +34,12 @@ public class SkillsGUI implements Listener {
     private void setupGUI() {
         PlayerSkillData data = plugin.getSkillManager().getPlayerData(player);
 
-        // Back button
         ItemStack backButton = new ItemStack(Material.ARROW);
         ItemMeta backMeta = backButton.getItemMeta();
         backMeta.setDisplayName("§c§l← Back to RPG Hub");
         backButton.setItemMeta(backMeta);
         inventory.setItem(0, backButton);
 
-        // Player info item
         ItemStack playerInfo = new ItemStack(Material.EXPERIENCE_BOTTLE);
         ItemMeta playerMeta = playerInfo.getItemMeta();
         playerMeta.setDisplayName("§a§l" + player.getName() + "'s Skills");
@@ -55,8 +53,7 @@ public class SkillsGUI implements Listener {
         playerInfo.setItemMeta(playerMeta);
         inventory.setItem(4, playerInfo);
 
-        // Skill items - arranged in rows
-        int[] skillSlots = {19, 21, 23, 25, 28, 30, 32, 34, 37, 39, 41, 43}; // 12 skills in rows
+        int[] skillSlots = {19, 21, 23, 25, 28, 30, 32, 34, 37};
         SkillType[] skills = SkillType.values();
 
         for (int i = 0; i < skills.length && i < skillSlots.length; i++) {
@@ -65,7 +62,6 @@ public class SkillsGUI implements Listener {
             inventory.setItem(skillSlots[i], skillItem);
         }
 
-        // Fill empty slots with glass panes
         ItemStack filler = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
         ItemMeta fillerMeta = filler.getItemMeta();
         fillerMeta.setDisplayName(" ");
@@ -86,14 +82,11 @@ public class SkillsGUI implements Listener {
         int maxLevel = 10;
         boolean canUpgrade = data.getSkillPoints() > 0 && currentLevel < maxLevel;
 
-        // Set display name with color based on upgrade availability
         String color = canUpgrade ? "§a" : (currentLevel > 0 ? "§e" : "§7");
         meta.setDisplayName(color + "§l" + skillType.getDisplayName());
 
-        // Create lore
         List<String> lore = new ArrayList<>();
 
-        // Split description by newlines for multi-line descriptions
         String[] descLines = skillType.getDescription().split("\n");
         for (String line : descLines) {
             lore.add("§7" + line);
@@ -102,12 +95,10 @@ public class SkillsGUI implements Listener {
         lore.add("");
         lore.add("§7Current Level: §f" + currentLevel + "§7/§f" + maxLevel);
 
-        // Show current bonuses
         if (currentLevel > 0) {
             addSkillBonusLore(lore, skillType, currentLevel);
         }
 
-        // Show next level bonuses
         if (currentLevel < maxLevel) {
             lore.add("");
             lore.add("§6Next Level Bonuses:");
@@ -128,9 +119,7 @@ public class SkillsGUI implements Listener {
             lore.add("§c§lNo skill points available");
         }
 
-        // Hide attributes to remove "When in Main hand" text
         meta.addItemFlags(org.bukkit.inventory.ItemFlag.HIDE_ATTRIBUTES);
-
         meta.setLore(lore);
         item.setItemMeta(meta);
 
@@ -141,36 +130,31 @@ public class SkillsGUI implements Listener {
         switch (skillType) {
             case SWORD_DAMAGE:
                 lore.add("§a  +" + String.format("%.1f", level * 5.0) + "% Sword Damage");
-                lore.add("§c  +" + String.format("%.2f", level * 0.01) + "% Instant Kill Chance");
                 break;
             case BOW_DAMAGE:
                 lore.add("§a  +" + String.format("%.1f", level * 4.0) + "% Bow Damage");
-                lore.add("§c  +" + String.format("%.2f", level * 0.005) + "% Instant Kill Chance");
                 break;
             case LIGHT_ARMOR_SPEED:
                 lore.add("§b  +" + String.format("%.1f", level * 3.0) + "% Movement Speed");
                 break;
             case ALCHEMY:
                 lore.add("§2  +" + String.format("%.1f", level * 5.0) + "% Potion Effectiveness");
-                lore.add("§8  +" + String.format("%.1f", level * 2.0) + "% Poison Duration");
-                lore.add("§7  Unlocks advanced recipes");
                 break;
             case RESTORATION:
                 lore.add("§a  +" + String.format("%.1f", level * 1.0) + "% Golden Apple Healing");
-                lore.add("§e  +" + String.format("%.1f", level * 2.0) + "% Health Potion Effectiveness");
-                lore.add("§c  +" + String.format("%.1f", level * 0.5) + "% Health Regeneration");
                 break;
             case SMITHING:
                 lore.add("§7  Unlocks better crafting recipes");
-                lore.add("§6  +" + String.format("%.1f", level * 3.0) + "% Crafting Success Rate");
                 break;
             case ENCHANTING:
                 lore.add("§5  +" + String.format("%.1f", level * 2.0) + "% Enchantment Effectiveness");
-                lore.add("§d  +" + String.format("%.1f", level * 1.0) + "% Enchantment Drop Chance");
                 break;
             case HEAVY_ARMOR:
                 lore.add("§7  +" + String.format("%.1f", level * 2.0) + "% Damage Reduction");
-                lore.add("§c  +" + String.format("%.1f", level * 1.0) + "% Health");
+                break;
+            case STAMINA:
+                lore.add("§e  +" + (level * 15) + " Max Stamina");
+                lore.add("§b  +" + String.format("%.1f", level * 5.0) + "% Sprint Efficiency");
                 break;
         }
     }
@@ -201,7 +185,6 @@ public class SkillsGUI implements Listener {
             return;
         }
 
-        // Back button
         if (clickedItem.getType() == Material.ARROW) {
             player.closeInventory();
             RPGMainGUI mainGUI = new RPGMainGUI(plugin, player);
@@ -209,7 +192,6 @@ public class SkillsGUI implements Listener {
             return;
         }
 
-        // Check if clicked item is a skill
         for (SkillType skillType : SkillType.values()) {
             if (clickedItem.getType() == skillType.getIcon()) {
                 handleSkillClick(skillType);
@@ -233,12 +215,10 @@ public class SkillsGUI implements Listener {
             return;
         }
 
-        // Upgrade the skill
         if (plugin.getSkillManager().upgradeSkill(player, skillType)) {
             int newLevel = data.getSkillLevel(skillType);
             player.sendMessage("§a§l✦ Skill Upgraded! §7" + skillType.getDisplayName() + " is now level " + newLevel);
 
-            // Show specific bonus gained
             String bonusMessage = getUpgradeBonusMessage(skillType, newLevel);
             if (!bonusMessage.isEmpty()) {
                 player.sendMessage(bonusMessage);
@@ -246,7 +226,6 @@ public class SkillsGUI implements Listener {
 
             player.playSound(player.getLocation(), org.bukkit.Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0f, 1.2f);
 
-            // Refresh the GUI
             inventory.clear();
             setupGUI();
         }
@@ -255,15 +234,13 @@ public class SkillsGUI implements Listener {
     private String getUpgradeBonusMessage(SkillType skillType, int newLevel) {
         switch (skillType) {
             case SWORD_DAMAGE:
-                return "§7New bonuses: §a+" + String.format("%.1f", newLevel * 5.0) + "% sword damage, §c+" + String.format("%.2f", newLevel * 0.01) + "% instant kill";
+                return "§7New bonus: §a+" + String.format("%.1f", newLevel * 5.0) + "% sword damage";
             case BOW_DAMAGE:
-                return "§7New bonuses: §a+" + String.format("%.1f", newLevel * 4.0) + "% bow damage, §c+" + String.format("%.2f", newLevel * 0.005) + "% instant kill";
+                return "§7New bonus: §a+" + String.format("%.1f", newLevel * 4.0) + "% bow damage";
             case LIGHT_ARMOR_SPEED:
                 return "§7New bonus: §b+" + String.format("%.1f", newLevel * 3.0) + "% movement speed";
-            case ALCHEMY:
-                return "§7New bonuses: §2+" + String.format("%.1f", newLevel * 5.0) + "% potion effectiveness, §8+" + String.format("%.1f", newLevel * 2.0) + "% poison duration";
-            case RESTORATION:
-                return "§7New bonuses: §a+" + String.format("%.1f", newLevel * 1.0) + "% golden apple healing, §e+" + String.format("%.1f", newLevel * 2.0) + "% potion effectiveness";
+            case STAMINA:
+                return "§7New bonus: §e+" + (newLevel * 15) + " max stamina";
             default:
                 return "";
         }

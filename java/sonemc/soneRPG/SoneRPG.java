@@ -1,46 +1,11 @@
 package sonemc.soneRPG;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import sonemc.soneRPG.listeners.ArmorSpeedListener;
-import sonemc.soneRPG.listeners.MobDifficultyListener;
-import sonemc.soneRPG.listeners.AdvancedParticleListener;
-import sonemc.soneRPG.listeners.HolographicHealthListener;
-import sonemc.soneRPG.listeners.SkillXPListener;
-import sonemc.soneRPG.listeners.EnhancedEnchantmentListener;
-import sonemc.soneRPG.listeners.ClassBonusListener;
-import sonemc.soneRPG.listeners.QuestProgressListener;
-import sonemc.soneRPG.listeners.ActionBarUpdateListener;
-import sonemc.soneRPG.listeners.RacialBonusListener;
-import sonemc.soneRPG.listeners.ArmorEnchantmentListener;
-import sonemc.soneRPG.listeners.PoisonListener;
-import sonemc.soneRPG.listeners.PotionListener;
-import sonemc.soneRPG.listeners.MobAbilitiesListener;
-import sonemc.soneRPG.managers.RPGLevelManager;
-import sonemc.soneRPG.managers.HologramManager;
-import sonemc.soneRPG.managers.SkillManager;
-import sonemc.soneRPG.managers.ConfigManager;
-import sonemc.soneRPG.managers.EnchantmentManager;
-import sonemc.soneRPG.managers.StatisticsManager;
-import sonemc.soneRPG.managers.RPGDataManager;
-import sonemc.soneRPG.managers.QuestManager;
-import sonemc.soneRPG.managers.ShopManager;
-import sonemc.soneRPG.managers.CraftingManager;
-import sonemc.soneRPG.managers.AlchemyManager;
-import sonemc.soneRPG.managers.PoisonManager;
-import sonemc.soneRPG.commands.SoneRPGCommand;
-import sonemc.soneRPG.commands.SkillsCommand;
-import sonemc.soneRPG.commands.RPGUICommand;
-import sonemc.soneRPG.commands.EnchantForgeCommand;
-import sonemc.soneRPG.commands.DisenchantCommand;
-import sonemc.soneRPG.commands.ClassCommand;
-import sonemc.soneRPG.commands.QuestCommand;
-import sonemc.soneRPG.commands.RPGShopCommand;
-import sonemc.soneRPG.commands.RaceCommand;
-import sonemc.soneRPG.commands.CraftCommand;
-import sonemc.soneRPG.commands.AlchemyCommand;
+import sonemc.soneRPG.listeners.*;
+import sonemc.soneRPG.managers.*;
+import sonemc.soneRPG.commands.*;
 
-public class
-SoneRPG extends JavaPlugin {
+public class SoneRPG extends JavaPlugin {
 
     private RPGLevelManager rpgLevelManager;
     private HologramManager hologramManager;
@@ -54,6 +19,7 @@ SoneRPG extends JavaPlugin {
     private CraftingManager craftingManager;
     private AlchemyManager alchemyManager;
     private PoisonManager poisonManager;
+    private StaminaManager staminaManager;
     private ActionBarUpdateListener actionBarListener;
     private ArmorEnchantmentListener armorEnchantmentListener;
     private AdvancedParticleListener particleListener;
@@ -63,10 +29,7 @@ SoneRPG extends JavaPlugin {
         printStartingMessage();
 
         try {
-            // Initialize config manager first
             this.configManager = new ConfigManager(this);
-
-            // Initialize managers
             this.rpgLevelManager = new RPGLevelManager(this);
             this.hologramManager = new HologramManager(this);
             this.skillManager = new SkillManager(this);
@@ -78,13 +41,12 @@ SoneRPG extends JavaPlugin {
             this.craftingManager = new CraftingManager(this);
             this.alchemyManager = new AlchemyManager(this);
             this.poisonManager = new PoisonManager(this);
+            this.staminaManager = new StaminaManager(this);
 
-            // Initialize listeners
             this.actionBarListener = new ActionBarUpdateListener(this);
             this.armorEnchantmentListener = new ArmorEnchantmentListener(this);
             this.particleListener = new AdvancedParticleListener(this);
 
-            // Register event listeners
             getServer().getPluginManager().registerEvents(new ArmorSpeedListener(), this);
             getServer().getPluginManager().registerEvents(new MobDifficultyListener(this), this);
             getServer().getPluginManager().registerEvents(particleListener, this);
@@ -99,8 +61,8 @@ SoneRPG extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new PoisonListener(this), this);
             getServer().getPluginManager().registerEvents(new PotionListener(this), this);
             getServer().getPluginManager().registerEvents(new MobAbilitiesListener(this), this);
+            getServer().getPluginManager().registerEvents(new StaminaListener(this), this);
 
-            // Register commands - with null checks
             if (getCommand("sonerpg") != null) {
                 getCommand("sonerpg").setExecutor(new SoneRPGCommand(this));
             }
@@ -135,7 +97,6 @@ SoneRPG extends JavaPlugin {
                 getCommand("alchemy").setExecutor(new AlchemyCommand(this));
             }
 
-            // Create config files
             saveDefaultConfig();
             configManager.createMobsConfig();
             enchantmentManager.createEnchantmentsConfig();
@@ -156,7 +117,6 @@ SoneRPG extends JavaPlugin {
         printStoppingMessage();
 
         try {
-            // Clean up listeners
             if (actionBarListener != null) {
                 actionBarListener.cleanup();
             }
@@ -169,27 +129,26 @@ SoneRPG extends JavaPlugin {
                 particleListener.cleanup();
             }
 
-            // Clean up holograms
+            if (staminaManager != null) {
+                staminaManager.cleanup();
+            }
+
             if (hologramManager != null) {
                 hologramManager.cleanup();
             }
 
-            // Save player data
             if (skillManager != null) {
                 skillManager.saveAllPlayerData();
             }
 
-            // Save enchantment data
             if (enchantmentManager != null) {
                 enchantmentManager.saveAllPlayerData();
             }
 
-            // Save statistics data
             if (statisticsManager != null) {
                 statisticsManager.saveAllPlayerData();
             }
 
-            // Save RPG data
             if (rpgDataManager != null) {
                 rpgDataManager.saveAllPlayerData();
             }
@@ -244,4 +203,5 @@ SoneRPG extends JavaPlugin {
     public CraftingManager getCraftingManager() { return craftingManager; }
     public AlchemyManager getAlchemyManager() { return alchemyManager; }
     public PoisonManager getPoisonManager() { return poisonManager; }
+    public StaminaManager getStaminaManager() { return staminaManager; }
 }
